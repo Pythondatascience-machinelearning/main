@@ -1040,6 +1040,7 @@
 #                 "congratulation_date": date_to_string(birthday_this_year)
 #             })
 
+
 #     return upcoming_birthdays
 
 # # Example users list
@@ -1056,6 +1057,39 @@
 
 
 
+# import sys
+
+# def main():
+#     print (sys.argv)
+
+# if __name__ == '__main__':
+#     main()
+
+
+from pathlib import Path
+import sys
+
+def main():
+    if len(sys.argv) < 2:
+        print("Error: Please provide a valid path as a command-line argument.")
+        return
+
+    user_input = sys.argv[1]
+    path = Path(user_input)
+
+    if path.exists():
+        if path.is_dir():
+            items = path.iterdir()
+            print(f"Contents of the directory '{path.absolute()}':")
+            for item in items:
+                print(item)
+        else:
+            print(f"'{path.name}' is a file")
+    else:
+        print(f"The path '{path.absolute()}' does not exist.")
+
+if __name__ == "__main__":
+    main()
 
 
 
